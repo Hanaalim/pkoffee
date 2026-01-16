@@ -1,5 +1,8 @@
 name: Test
-on: [push]
+on:
+push:
+ branches:
+  -"*"
 
 jobs:
 
@@ -13,10 +16,3 @@ jobs:
       with:
         pixi-version: v0.62.2 # good to pin this since pixi is not 1.0 yet!
     - run: pixi run pytest
-
-
-
-
-
-
-
