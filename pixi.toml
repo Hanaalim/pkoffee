@@ -74,4 +74,5 @@ prod314 = { features = ["py314"], solve-group = "prod314" }
 
 # python 3.12 environments for testing
 prod312 = { features = ["py312"], solve-group = "prod312" }
-test = ["test"]
+[tasks]
+test = "pytest"
