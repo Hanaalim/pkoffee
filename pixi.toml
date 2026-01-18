@@ -48,24 +48,29 @@ scipy = ">=1.16.3,<2"
 seaborn = ">=0.13.2,<0.14"
 tomlkit = ">=0.13.3,<1"
 
+
 # A feature per-python version to test the build-variants
 [feature.py312.dependencies]
-python=">=3.12,<3.13"
+python = ">=3.12,<3.13"
 
 [feature.py313.dependencies]
-python=">=3.13,<3.14"
+python = ">=3.13,<3.14"
 
 [feature.py314.dependencies]
-python=">=3.14,<3.15"
+python = ">=3.14,<3.15"
 
 [feature.dev.dependencies]
 jupyterlab = ">=4.4.3,<5"
 
+[feature.test.dependencies]
+pytest = "*"
+pytest-cov = ">=7,<8"
+
 [environments]
+default = { features = ["dev", "test", "py313"], solve-group = "prod" }
+
+# prod environment
 prod = { features = ["py313"], solve-group = "prod" }
-# use default for the dev environment so tasks are resolved in this environment (avoids having to specify env)
-# no need to include doc: pixi will figure the environment to use from the task if it is unique
-default = { features = ["dev", "py313"], solve-group = "prod" }
 
 # python 3.14 environments for testing
 prod314 = { features = ["py314"], solve-group = "prod314" }
